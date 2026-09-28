@@ -1,8 +1,15 @@
 import os
+import sys
 from typing import List, Optional
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
+
+# Ensure UTF-8 output on Windows terminals
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8")
 
 from src.config import PINECONE_INDEX_NAME, OPENAI_API_KEY, PINECONE_API_KEY
 from src.graph import build_rag_graph
@@ -36,7 +43,11 @@ def get_graph():
 
 
 class QueryRequest(BaseModel):
-    query: str = Field(..., description="The user query to be answered using the eBook.", example="What is Agentic AI according to the eBook?")
+    query: str = Field(
+        ...,
+        description="The user query to be answered using the eBook.",
+        json_schema_extra={"example": "What is Agentic AI according to the eBook?"},
+    )
 
 
 class QueryResponse(BaseModel):
@@ -102,4 +113,4 @@ async def chat_endpoint(request: QueryRequest):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("app:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run(app, host="0.0.0.0", port=8000)
