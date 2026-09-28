@@ -23,38 +23,37 @@ st.markdown(
 
     /* Top Hero Header */
     .hero-container {
-        padding: 1.5rem 1.8rem;
+        padding: 1.2rem 1.6rem;
         background: linear-gradient(135deg, rgba(30, 27, 75, 0.7) 0%, rgba(15, 23, 42, 0.8) 100%);
         border: 1px solid rgba(99, 102, 241, 0.25);
-        border-radius: 16px;
+        border-radius: 14px;
         backdrop-filter: blur(16px);
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.2rem;
         box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     }
     .hero-title {
-        font-size: 2.2rem;
+        font-size: 2.0rem;
         font-weight: 800;
         letter-spacing: -0.02em;
         background: linear-gradient(90deg, #818cf8 0%, #c084fc 50%, #38bdf8 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        margin-bottom: 0.4rem;
+        margin-bottom: 0.2rem;
         display: flex;
         align-items: center;
         gap: 12px;
     }
     .hero-subtitle {
         color: #94a3b8;
-        font-size: 1.0rem;
+        font-size: 0.95rem;
         font-weight: 400;
         line-height: 1.5;
-        margin-bottom: 0.8rem;
+        margin-bottom: 0.6rem;
     }
     .hero-badges {
         display: flex;
         flex-wrap: wrap;
         gap: 8px;
-        margin-top: 0.5rem;
     }
     .badge-pill {
         display: inline-flex;
@@ -120,41 +119,31 @@ st.markdown(
     }
 
     /* Inspector Score Card */
-    .inspector-header {
-        font-size: 1.15rem;
-        font-weight: 700;
-        color: #f8fafc;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        margin-bottom: 1rem;
-    }
     .score-card-v2 {
-        background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.6) 100%);
+        background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(30, 41, 59, 0.7) 100%);
         border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 14px;
-        padding: 16px;
-        margin-bottom: 1.2rem;
+        padding: 18px;
         backdrop-filter: blur(12px);
     }
     .score-high {
         border-left: 4px solid #10b981;
-        box-shadow: 0 0 15px rgba(16, 185, 129, 0.15);
+        box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
     }
     .score-medium {
         border-left: 4px solid #f59e0b;
-        box-shadow: 0 0 15px rgba(245, 158, 11, 0.15);
+        box-shadow: 0 0 20px rgba(245, 158, 11, 0.15);
     }
     .score-refusal {
         border-left: 4px solid #ef4444;
-        box-shadow: 0 0 15px rgba(239, 68, 68, 0.15);
+        box-shadow: 0 0 20px rgba(239, 68, 68, 0.15);
     }
     .score-number {
         font-size: 2.2rem;
         font-weight: 800;
         font-family: 'JetBrains Mono', monospace;
         letter-spacing: -0.03em;
-        line-height: 1;
+        line-height: 1.1;
         margin: 6px 0;
     }
     .score-label {
@@ -179,43 +168,66 @@ st.markdown(
         transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    /* Chunk cards */
-    .chunk-box {
-        background: rgba(15, 23, 42, 0.7);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 12px;
-        padding: 14px;
-        margin-bottom: 12px;
-        font-size: 0.88rem;
-        line-height: 1.6;
-        color: #cbd5e1;
-        transition: border-color 0.2s ease, transform 0.2s ease;
+    /* Side-by-Side Chunk Card Styling */
+    .chunk-box-horizontal {
+        background: rgba(15, 23, 42, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        border-top: 3px solid #6366f1;
+        border-radius: 14px;
+        padding: 16px;
+        height: 380px;
+        display: flex;
+        flex-direction: column;
+        backdrop-filter: blur(12px);
+        transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        margin-bottom: 1rem;
     }
-    .chunk-box:hover {
-        border-color: rgba(99, 102, 241, 0.4);
-        transform: translateY(-1px);
+    .chunk-box-horizontal:hover {
+        transform: translateY(-2px);
+        border-color: rgba(99, 102, 241, 0.5);
+        box-shadow: 0 8px 24px rgba(99, 102, 241, 0.25);
     }
-    .chunk-meta {
+    .chunk-header-pill {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 8px;
-        font-size: 0.75rem;
-        font-weight: 600;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+    .chunk-tag {
+        font-size: 0.8rem;
+        font-weight: 700;
         color: #818cf8;
         text-transform: uppercase;
         letter-spacing: 0.05em;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-        padding-bottom: 6px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
     }
-    .chunk-content {
-        white-space: pre-wrap;
-        font-family: inherit;
-        font-size: 0.85rem;
-        color: #e2e8f0;
-        max-height: 220px;
+    .chunk-words {
+        font-size: 0.74rem;
+        color: #94a3b8;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 2px 8px;
+        border-radius: 9999px;
+    }
+    .chunk-body {
+        flex: 1;
         overflow-y: auto;
+        font-size: 0.86rem;
+        line-height: 1.65;
+        color: #cbd5e1;
         padding-right: 6px;
+        white-space: pre-wrap;
+    }
+    .chunk-body::-webkit-scrollbar {
+        width: 5px;
+    }
+    .chunk-body::-webkit-scrollbar-thumb {
+        background: rgba(99, 102, 241, 0.3);
+        border-radius: 4px;
     }
 
     /* Welcome Hero Card for Empty State */
@@ -225,7 +237,7 @@ st.markdown(
         border-radius: 14px;
         padding: 24px;
         text-align: center;
-        margin: 20px 0;
+        margin: 16px 0;
     }
     .welcome-title {
         font-size: 1.3rem;
@@ -364,10 +376,10 @@ if "last_score" not in st.session_state:
 if "last_query" not in st.session_state:
     st.session_state.last_query = None
 
-# Main Layout Split: Left (Chat Conversation) - Right (Inspector)
-col1, col2 = st.columns([7, 5], gap="large")
+# TOP SECTION: Dialogue Console (Left) and Grounding / Confidence Card (Right)
+top_col1, top_col2 = st.columns([7, 5], gap="large")
 
-with col1:
+with top_col1:
     st.markdown('### 💬 Dialogue Console')
 
     # Display empty state hero if no messages yet
@@ -413,11 +425,8 @@ with col1:
         st.session_state["user_input_val"] = None
 
     if user_query:
-        # Append User Message
         st.session_state.messages.append({"role": "user", "content": user_query})
         st.session_state.last_query = user_query
-
-        # Rerun to render user message immediately
         st.rerun()
 
     # Process response if user just asked a question and assistant hasn't replied yet
@@ -449,8 +458,8 @@ with col1:
                     st.session_state.messages.append({"role": "assistant", "content": err_msg})
 
 
-with col2:
-    st.markdown('<div class="inspector-header">🔍 Context & Grounding Inspector</div>', unsafe_allow_html=True)
+with top_col2:
+    st.markdown('### 🎯 Grounding & Confidence Meter')
 
     if st.session_state.last_score is not None:
         confidence = float(st.session_state.last_score)
@@ -458,7 +467,7 @@ with col2:
 
         if confidence >= 0.80:
             card_class = "score-high"
-            status_text = "🟢 HIGH GROUNDING • FACTUAL"
+            status_text = "🟢 STRICTLY GROUNDED • FACTUAL"
             status_color = "#34d399"
             fill_gradient = "linear-gradient(90deg, #10b981 0%, #34d399 100%)"
             explanation = "Answer is strictly substantiated by top retrieved document passages."
@@ -483,39 +492,73 @@ with col2:
                 <div class="progress-bar-bg">
                     <div class="progress-bar-fill" style="width: {pct}%; background: {fill_gradient};"></div>
                 </div>
-                <div style="font-size: 0.8rem; color: #94a3b8; line-height: 1.4;">{explanation}</div>
+                <div style="font-size: 0.85rem; color: #94a3b8; line-height: 1.4;">{explanation}</div>
+                <div style="margin-top: 12px; padding-top: 10px; border-top: 1px solid rgba(255, 255, 255, 0.08); font-size: 0.8rem; color: #64748b;">
+                    Passages Retrieved: <strong style="color: #cbd5e1;">{len(st.session_state.last_retrieved_context)} Chunks</strong> • Model: <strong style="color: #cbd5e1;">gpt-4o-mini / LangGraph</strong>
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+    else:
+        st.markdown(
+            """
+            <div class="score-card-v2" style="border-left: 4px solid #6366f1;">
+                <div class="score-label" style="color: #818cf8;">⚪ AWAITING INFERENCE</div>
+                <div class="score-number" style="color: #94a3b8;">-- <span style="font-size: 1.1rem; color: #64748b; font-weight: 500;">/ 1.0</span></div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" style="width: 0%;"></div>
+                </div>
+                <div style="font-size: 0.85rem; color: #94a3b8; line-height: 1.4;">
+                    Confidence meter and anti-hallucination analysis will appear here once a query is executed.
+                </div>
             </div>
             """,
             unsafe_allow_html=True,
         )
 
-    if st.session_state.last_retrieved_context:
-        num_chunks = len(st.session_state.last_retrieved_context)
-        st.markdown(f"**Retrieved Context Passages ({num_chunks})**")
 
-        for idx, chunk_text in enumerate(st.session_state.last_retrieved_context, 1):
-            clean_text = chunk_text.strip()
-            word_count = len(clean_text.split())
+# BOTTOM SECTION: SIDE-BY-SIDE RETRIEVED CONTEXT PASSAGES
+st.markdown("---")
+st.markdown("### 📑 Retrieved Context Passages (Grounding Sources)")
+
+if st.session_state.last_retrieved_context:
+    chunks = st.session_state.last_retrieved_context
+    num_chunks = len(chunks)
+    
+    st.caption(f"Showing all **{num_chunks} retrieved chunks** side by side in parallel inspection columns:")
+
+    # Create side-by-side columns matching the number of retrieved chunks (up to 3 or 4)
+    cols = st.columns(num_chunks, gap="medium")
+
+    for idx, (col, chunk_text) in enumerate(zip(cols, chunks), 1):
+        clean_text = chunk_text.strip()
+        word_count = len(clean_text.split())
+
+        with col:
             st.markdown(
                 f"""
-                <div class="chunk-box">
-                    <div class="chunk-meta">
-                        <span>📄 Passage Chunk #{idx}</span>
-                        <span>~{word_count} Words</span>
+                <div class="chunk-box-horizontal">
+                    <div class="chunk-header-pill">
+                        <span class="chunk-tag">📄 Passage Chunk #{idx}</span>
+                        <span class="chunk-words">~{word_count} Words</span>
                     </div>
-                    <div class="chunk-content">{clean_text}</div>
+                    <div class="chunk-body">{clean_text}</div>
                 </div>
                 """,
                 unsafe_allow_html=True,
             )
-    else:
-        st.markdown(
-            """
-            <div style="background: rgba(15, 23, 42, 0.4); border: 1px dashed rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 24px; text-align: center; color: #64748b;">
-                <div style="font-size: 1.5rem; margin-bottom: 8px;">📑</div>
-                <div style="font-weight: 600; color: #94a3b8; margin-bottom: 4px;">No Active Retrieval Query</div>
-                <div style="font-size: 0.82rem;">Select a benchmark query or enter a question to inspect retrieved context chunks in real time.</div>
+else:
+    st.markdown(
+        """
+        <div style="background: rgba(15, 23, 42, 0.4); border: 1px dashed rgba(255, 255, 255, 0.1); border-radius: 14px; padding: 32px; text-align: center; color: #64748b;">
+            <div style="font-size: 2rem; margin-bottom: 8px;">📑</div>
+            <div style="font-weight: 600; color: #94a3b8; font-size: 1.0rem; margin-bottom: 4px;">No Retrieved Passages Yet</div>
+            <div style="font-size: 0.85rem; max-width: 480px; margin: 0 auto;">
+                Ask a question or click a benchmark query from the sidebar. 
+                All 3 retrieved document chunks will be displayed <strong>side by side</strong> here for real-time verification.
             </div>
-            """,
-            unsafe_allow_html=True,
-        )
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
