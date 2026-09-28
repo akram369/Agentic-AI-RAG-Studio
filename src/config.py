@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 # Load .env file from project root
 BASE_DIR = Path(__file__).resolve().parent.parent
-load_dotenv(dotenv_path=BASE_DIR / ".env")
+load_dotenv(dotenv_path=BASE_DIR / ".env", override=True)
 
 # API Keys & Credentials
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
